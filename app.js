@@ -1,5 +1,6 @@
 // require the express package to be used
 const express = require('express')
+const morgan = require('morgan') //logger middleware
 
 // create an express app
 const app = express()
@@ -8,13 +9,14 @@ app.set('view engine', 'ejs') // using ejs for views and templates
 app.listen(3000)
 
 // middlewares
-app.use((req, res, next) => {  // add the next, so the express knows what to do next..
-  console.log('** new request was made **')
-  console.log('host:', req.hostname)
-  console.log('path:', req.path)
-  console.log('method: ', req.method)
-  next() // after the middleware is finished, please carry on..
-})
+app.use(morgan('tiny'))
+// app.use((req, res, next) => {  // add the next, so the express knows what to do next..
+//   console.log('** new request was made **')
+//   console.log('host:', req.hostname)
+//   console.log('path:', req.path)
+//   console.log('method: ', req.method)
+//   next() // after the middleware is finished, please carry on..
+// })
 
 
 // routers
