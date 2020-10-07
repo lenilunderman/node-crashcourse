@@ -7,6 +7,16 @@ app.set('view engine', 'ejs') // using ejs for views and templates
 // listen to the port of the server
 app.listen(3000)
 
+// middlewares
+app.use((req, res, next) => {  // add the next, so the express knows what to do next..
+  console.log('** new request was made **')
+  console.log('host:', req.hostname)
+  console.log('path:', req.path)
+  console.log('method: ', req.method)
+  next() // after the middleware is finished, please carry on..
+})
+
+
 // routers
 app.get('/', (req, res) => {
   // passing static objects into the ejs pages
