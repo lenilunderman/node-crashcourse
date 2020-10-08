@@ -2,6 +2,7 @@ const express = require('express')
 // access the database, model folder to get the model
 const Blog = require('../models/blog')
 
+
 const router = express.Router()
 
 // blog routes
