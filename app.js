@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000
 //?? connection to mongoDB - user - pass - database name
 
 // using mongoose to connect
-mongoose.connect(process.env.MONGODB_URI || database, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI || database.database, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => app.listen(PORT)) // will listen to requests just after the connection is made.
   .catch((err) => console.log(err))
 
