@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "start server": "nodemon app.js"
+    "start server": "nodemon app.js",
+    "deploy": "gh-pages-deploy -- 'Deployed to the server'",
+    "clean-source": "rimraf README.md src webroot package.json"
   },
   "repository": {
     "type": "git",
