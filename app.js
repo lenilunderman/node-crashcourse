@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 
 // access the database, model folder to get the model
 const Blog = require('./models/blog')
+const { render } = require('ejs')
 
 // create an express app
 const app = express()
@@ -70,6 +71,17 @@ app.post('/blogs', (req, res) => {
       res.redirect('/blogs')
     })
     .catch((err) => {
+      console.log(err)
+    })
+})
+
+app.get('/blogs/:id', (req, res) => {
+  const id = req.params.id
+  Blog.findById(id)
+    .then(result => {
+      res.render('details', { blog: result, title: 'Blog Details' })
+    })
+    .catch(err => {
       console.log(err)
     })
 })
