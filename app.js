@@ -1,14 +1,23 @@
 // require the express package to be used
 const express = require('express')
 const morgan = require('morgan') //logger middleware
+const mongoose = require('mongoose')
 
 // create an express app
 const app = express()
-app.set('view engine', 'ejs') // using ejs for views and templates
-// listen to the port of the server
-app.listen(3000)
+
+//?? connection to mongoDB
+const database = 'mongodb+srv://lenilunderman:M@forty42two@nodeleni.az2vk.mongodb.net/leni-database?retryWrites=true&w=majority'
+// using mongoose to connect
+mongoose.connect(database, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((result) => app.listen(3000)) // will listen to requests just after the connection is made.
+  .catch((err) => console.log(err))
+
+
+app.set('view engine', 'ejs') //!! using ejs for views and templates
 
 // middlewares
+app.use(express.static('public')) //!! tells what folder is public inside the project, so the css can go in here
 app.use(morgan('tiny'))
 // app.use((req, res, next) => {  // add the next, so the express knows what to do next..
 //   console.log('** new request was made **')
