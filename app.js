@@ -4,6 +4,10 @@ const morgan = require('morgan') //logger middleware
 const mongoose = require('mongoose')
 const blogRoutes = require('./routes/blogRoutes')
 // const database = require('./connection')
+require('dotenv').config()
+
+let host = process.env.HOST
+
 
 const { render } = require('ejs')
 
@@ -15,7 +19,7 @@ const PORT = process.env.PORT || 3000
 const database = 'mongodb+srv://lenilunderman:M@forty42two@nodeleni.az2vk.mongodb.net/leni-database?retryWrites=true&w=majority'
 // using mongoose to connect
 mongoose.connect(process.env.MONGODB_URI || database, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(PORT)) // will listen to requests just after the connection is made.
+  .then((result) => app.listen(host)) // will listen to requests just after the connection is made.
   .catch((err) => console.log(err))
 
 
