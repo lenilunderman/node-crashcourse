@@ -73,12 +73,13 @@
       position: absolute;
       top: 0;
       right: 0;
-      border-radius: 50%;
+      border-radius: 25%;
       padding: 8px;
     }
     .delete:hover{
       cursor: pointer;
       box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+      color: red;
     }
 
     /* create styles */
