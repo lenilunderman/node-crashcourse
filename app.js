@@ -8,7 +8,6 @@ require('dotenv').config()
 
 let host = process.env.HOST
 
-
 const { render } = require('ejs')
 
 // create an express app
@@ -18,8 +17,8 @@ const PORT = process.env.PORT || 3000
 //?? connection to mongoDB - user - pass - database name
 const database = 'mongodb+srv://lenilunderman:M@forty42two@nodeleni.az2vk.mongodb.net/leni-database?retryWrites=true&w=majority'
 // using mongoose to connect
-mongoose.connect(process.env.MONGODB_URI || database, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(host)) // will listen to requests just after the connection is made.
+mongoose.connect(process.env.MONGODB_URI || host, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((result) => app.listen(PORT)) // will listen to requests just after the connection is made.
   .catch((err) => console.log(err))
 
 
